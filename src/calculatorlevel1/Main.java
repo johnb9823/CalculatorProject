@@ -15,6 +15,7 @@ public class Main {
             if (input1.equalsIgnoreCase(exit)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
+                //플래그 사는 불리언 타입의 변수
             }
             int n1 = Integer.parseInt(input1);
             // 문자열을 정수로 변환
@@ -58,7 +59,6 @@ public class Main {
             }
             System.out.println();  // 계산 후 공백 한 줄 추가
         }
-
 
     }
 }
