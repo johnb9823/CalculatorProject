@@ -10,22 +10,22 @@ public class App {
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요 (종료하려면 'exit'을 입력하세요): ");
-            String input1 = scanner.nextLine();
-            if (input1.equalsIgnoreCase(exit)) {
+            String firstNum = scanner.nextLine();
+            if (firstNum.equalsIgnoreCase(exit)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
             // 첫 번째 숫자 입력
-            double n1 = Double.parseDouble(input1);
+            double n1 = Double.parseDouble(firstNum);
 
             System.out.print("두 번째 숫자를 입력하세요: ");
-            String input2 = scanner.nextLine();
-            if (input2.equalsIgnoreCase(exit)) {
+            String secondNum = scanner.nextLine();
+            if (secondNum.equalsIgnoreCase(exit)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
             // 두 번째 숫자 입력
-            double n2 = Double.parseDouble(input2);
+            double n2 = Double.parseDouble(secondNum);
 
             System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /): ");
             String op = scanner.nextLine();
@@ -38,8 +38,8 @@ public class App {
             while (op.equals("/") && n2 == 0) {
                 System.out.println("분모는 0일 수 없습니다. 다른 값을 입력해주세요.");
                 System.out.print("두 번째 숫자를 다시 입력하세요: ");
-                input2 = scanner.nextLine();
-                n2 = Double.parseDouble(input2);  // 새로운 값을 받음
+                secondNum = scanner.nextLine();
+                n2 = Double.parseDouble(secondNum);  // 새로운 값을 받음
             }
 
 

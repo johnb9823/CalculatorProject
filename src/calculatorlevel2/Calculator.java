@@ -29,7 +29,6 @@ public class Calculator {
     public double divide(double num1, double num2) {
         if (num2 == 0) {
             System.out.println("분모는 0일 수 없습니다. 다른 값을 입력해주세요.");
-            return Double.NaN;
         }
         double result = num1 / num2;
         results.add(result);
@@ -57,6 +56,11 @@ public class Calculator {
     public List<Double> getResults() {
         return results;
     }
+
+    public void setResults(List<Double> results) {
+        this.results = results;
+    }
+
 
     // 연산 결과 목록에서 가장 먼저 저장된 데이터를 삭제
     public void removeFirstResult() {
