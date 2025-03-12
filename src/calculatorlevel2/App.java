@@ -2,34 +2,50 @@ package calculatorlevel2;
 import java.util.Scanner;
 
 public class App {
+    private static final String exit = "exit";
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String exit = "exit";
+
         Calculator calculator = new Calculator();
 
-        while (true) {
+        boolean flag = true;
+        while (flag) {
+            double n1 = 0;
             System.out.print("첫 번째 숫자를 입력하세요 (종료하려면 'exit'을 입력하세요): ");
             String firstNum = scanner.nextLine();
-            if (firstNum.equalsIgnoreCase(exit)) {
+            if (exit.equalsIgnoreCase(firstNum)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
-            // 첫 번째 숫자 입력
-            double n1 = Double.parseDouble(firstNum);
 
+            //예외처리 추가 : 입력 값이 숫자가 아닐 겅우 다시 입력 받기
+            try {
+                n1 = Double.parseDouble(firstNum);
+            } catch(NumberFormatException e) {
+                System.out.println("잘못된 입력입니다. 숫자를 입력하세요.");
+                continue; // 다시 반복문으로 돌아가서 입력받기
+            }
+
+            double n2 = 0;
             System.out.print("두 번째 숫자를 입력하세요: ");
             String secondNum = scanner.nextLine();
-            if (secondNum.equalsIgnoreCase(exit)) {
+            if (exit.equalsIgnoreCase(secondNum)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
-            // 두 번째 숫자 입력
-            double n2 = Double.parseDouble(secondNum);
+
+            try{
+                n2 = Double.parseDouble(secondNum);
+            }catch(NumberFormatException e){
+                System.out.println("잘못된 입력입니다. 숫자를 입력하세요.");
+                continue; // 다시 반복문으로 돌아가서 입력받기
+            }
+
 
             System.out.print("사칙연산 기호를 입력하세요 (+, -, *, /): ");
             String op = scanner.nextLine();
-            if (op.equalsIgnoreCase(exit)) {
+            if (exit.equalsIgnoreCase(op)) {
                 System.out.println("계산기를 종료합니다.");
                 break;
             }
@@ -39,7 +55,12 @@ public class App {
                 System.out.println("분모는 0일 수 없습니다. 다른 값을 입력해주세요.");
                 System.out.print("두 번째 숫자를 다시 입력하세요: ");
                 secondNum = scanner.nextLine();
-                n2 = Double.parseDouble(secondNum);  // 새로운 값을 받음
+                try {
+                    n2 = Double.parseDouble(secondNum);  // 새로운 값을 받음
+                } catch (NumberFormatException e) {
+                    System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                    continue;  // 다시 반복문으로 돌아가서 입력 받기
+                }
             }
 
 
@@ -60,6 +81,7 @@ public class App {
             if (deleteChoice.equalsIgnoreCase("y")) {
                 calculator.removeFirstResult();
             }
+
         }
 
     }
